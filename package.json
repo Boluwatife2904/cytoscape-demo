@@ -16,6 +16,7 @@
     "cytoscape-cise": "^2.0.0",
     "cytoscape-cola": "^2.5.1",
     "cytoscape-cose-bilkent": "^4.1.0",
+    "cytoscape-euler": "^1.2.3",
     "cytoscape-fcose": "^2.2.0",
     "cytoscape-springy": "^1.4.2",
     "install": "^0.13.0",

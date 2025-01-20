@@ -6,7 +6,9 @@ import cola from "cytoscape-cola";
 import fcose from "cytoscape-fcose";
 import coseBilkent from "cytoscape-cose-bilkent";
 import cise from "cytoscape-cise";
+import euler from "cytoscape-euler";
 import Search from "./Search";
+import COLORS from "../constants/colors";
 // import cyarbor from "cytoscape-arbor";
 // import arbor from "arbor";
 
@@ -20,6 +22,7 @@ cytoscape.use(cola);
 cytoscape.use(fcose);
 cytoscape.use(coseBilkent);
 cytoscape.use(cise);
+cytoscape.use(euler);
 // cytoscape.use(springy);
 // springy(cytoscape);
 // cytoscape.use(arbor);
@@ -38,15 +41,14 @@ const HierarchicalGraph = () => {
         backgroundColor: "#343434",
         color: "white",
         width: "label",
-        height: "16",
+        height: "10",
         shape: "rectangle",
         textHalign: "center",
         textValign: "center",
-        paddingLeft: "10px",
-        paddingRight: "10px",
+        paddingLeft: "5px",
+        paddingRight: "5px",
         // color: "black",
-        // fontSize: 12,
-        // borderRadius: 0,
+        fontSize: 9,
       },
     },
     {
@@ -87,14 +89,15 @@ const HierarchicalGraph = () => {
       selector: "edge",
       style: {
         "curve-style": "bezier",
-        "target-arrow-shape": "triangle",
-        width: 0.5,
+        "target-arrow-shape": "square",
+        width: 0.3,
         // width: 1.3,
         lineColor: "white",
         // lineCap: "round",
         // opacity: 0.5,
         // "target-arrow-shape": "triangle",
-        "target-arrow-color": (node) => "orange",
+        "target-arrow-color": () => COLORS[Math.floor(Math.random() * COLORS.length)],
+        "arrow-scale": 0.5,
         // "target-distance-from-node": 100,
       },
     },
@@ -178,21 +181,21 @@ const HierarchicalGraph = () => {
     name: "cose-bilkent",
     fit: true,
     animate: false,
-    refresh: 100,
+    // refresh: 100,
     padding: 10,
-    nodeRepulsion: 20000,
+    nodeRepulsion: 15000,
     idealEdgeLength: 200,
     idealEdgeWidth: 300,
     nodeDimensionsIncludeLabels: false,
-    nodeOverlap: 100,
+    // nodeOverlap: 100,
     // // idealEdgeLength: 100,
     edgeElasticity: 1,
     gravity: 0.6,
-    stiffness: 400,
+    // stiffness: 400,
     repulsion: 400,
     damping: 0.9,
     quality: "proof",
-    nodeSpacing: 500,
+    // nodeSpacing: 500,
     // name: "springy",
     // nodeRepulsion: 1000,
     // idealEdgeLength: 50,
