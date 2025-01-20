@@ -1,43 +1,30 @@
-const elements = [
-  { data: { id: "weather", label: "Weather", nodeType: "parent" }, classes: "main" }, // done
-  { data: { id: "wine", label: "Wine", nodeType: "parent" }, classes: "main" }, // done
-  { data: { id: "word", label: "Word", nodeType: "parent" }, classes: "main" }, //done
-  { data: { id: "time", label: "Time", nodeType: "parent" }, classes: "main" }, // done
-  { data: { id: "email", label: "Email", nodeType: "parent" }, classes: "main" }, // done
-  { data: { id: "image", label: "Image", nodeType: "parent" }, classes: "main" }, // done
-  { data: { id: "parking", label: "Parking", nodeType: "parent" }, classes: "main" }, // done
-  { data: { id: "money", label: "Money", nodeType: "parent" }, classes: "main" }, // done
-  { data: { id: "payment", label: "Payment", nodeType: "parent" }, classes: "main" }, // done
-  { data: { id: "flight_booking", label: "FlightBooking", nodeType: "parent" }, classes: "main" }, // done
-  { data: { id: "rating", label: "Rating", nodeType: "parent" }, classes: "main" }, // done
-  { data: { id: "recipe", label: "Recipe", nodeType: "parent" }, classes: "main" }, // done
-  { data: { id: "person", label: "Person", nodeType: "parent" }, classes: "main" }, // done
-  { data: { id: "calendar", label: "Calendar", nodeType: "parent" }, classes: "main" }, // done
-  { data: { id: "authorization", label: "Authorization", nodeType: "parent" }, classes: "main" }, // done
-  { data: { id: "residence", label: "Residence", nodeType: "parent" }, classes: "main" }, // done
-  { data: { id: "comic_strip", label: "comicStrip", nodeType: "parent" }, classes: "main" }, // done
-  { data: { id: "measurement", label: "Measurement", nodeType: "parent" }, classes: "main" }, // done
-  { data: { id: "earthquake", label: "Earthquake", nodeType: "parent" }, classes: "main" }, // done
-  { data: { id: "restaurant", label: "Restaurant", nodeType: "parent" }, classes: "main" }, // done
+export interface NodeOrEdge {
+  data: { id?: string; label?: string; source?: string; target?: string; nodeType?: string };
+  classes?: string;
+}
 
-  // Linking overlapping modules
-//   { data: { source: "calendar", target: "time" } },
-//   { data: { source: "calendar", target: "email" } },
-//   { data: { source: "authorization", target: "person" } },
-//   { data: { source: "residence", target: "person" } },
-//   { data: { source: "payment", target: "money" } },
-//   { data: { source: "flight_booking", target: "payment" } },
-//   { data: { source: "rating", target: "recipe" } },
-//   { data: { source: "rating", target: "person" } },
-//   { data: { source: "word", target: "email" } },
-//   { data: { source: "word", target: "time" } },
-//   { data: { source: "image", target: "email" } },
-//   { data: { source: "image", target: "word" } },
-//   { data: { source: "weather", target: "time" } },
-//   { data: { source: "wine", target: "recipe" } },
-//   { data: { source: "wine", target: "rating" } },
+const elements: NodeOrEdge[] = [
+  { data: { id: "weather", label: "Weather", nodeType: "parent" }, classes: "main" },
+  { data: { id: "wine", label: "Wine", nodeType: "parent" }, classes: "main" },
+  { data: { id: "word", label: "Word", nodeType: "parent" }, classes: "main" },
+  { data: { id: "time", label: "Time", nodeType: "parent" }, classes: "main" },
+  { data: { id: "email", label: "Email", nodeType: "parent" }, classes: "main" },
+  { data: { id: "image", label: "Image", nodeType: "parent" }, classes: "main" },
+  { data: { id: "parking", label: "Parking", nodeType: "parent" }, classes: "main" },
+  { data: { id: "money", label: "Money", nodeType: "parent" }, classes: "main" },
+  { data: { id: "payment", label: "Payment", nodeType: "parent" }, classes: "main" },
+  { data: { id: "flight_booking", label: "FlightBooking", nodeType: "parent" }, classes: "main" },
+  { data: { id: "rating", label: "Rating", nodeType: "parent" }, classes: "main" },
+  { data: { id: "recipe", label: "Recipe", nodeType: "parent" }, classes: "main" },
+  { data: { id: "person", label: "Person", nodeType: "parent" }, classes: "main" },
+  { data: { id: "calendar", label: "Calendar", nodeType: "parent" }, classes: "main" },
+  { data: { id: "authorization", label: "Authorization", nodeType: "parent" }, classes: "main" },
+  { data: { id: "residence", label: "Residence", nodeType: "parent" }, classes: "main" },
+  { data: { id: "comic_strip", label: "comicStrip", nodeType: "parent" }, classes: "main" },
+  { data: { id: "measurement", label: "Measurement", nodeType: "parent" }, classes: "main" },
+  { data: { id: "earthquake", label: "Earthquake", nodeType: "parent" }, classes: "main" },
+  { data: { id: "restaurant", label: "Restaurant", nodeType: "parent" }, classes: "main" },
 
-  // Checking for overlapping edges within the same module
   // Calendar Module
   { data: { source: "calendar", target: "calendar_reminder" } },
   { data: { source: "calendar", target: "calendar_invitation" } },

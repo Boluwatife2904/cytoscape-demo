@@ -1,4 +1,4 @@
-.loader-parent {
+.loader {
   height: 100vh;
   width: 100%;
   display: flex;
@@ -6,7 +6,7 @@
   justify-content: center;
 }
 
-.loader {
+.loader__item {
   width: 20px;
   aspect-ratio: 1;
   display: grid;
@@ -16,8 +16,9 @@
   background-repeat: no-repeat;
   animation: l23 1s infinite steps(12);
 }
-.loader::before,
-.loader::after {
+
+.loader__item::before,
+.loader__item::after {
   content: "";
   grid-area: 1/1;
   border-radius: 50%;
@@ -25,10 +26,12 @@
   opacity: 0.915;
   transform: rotate(30deg);
 }
-.loader::after {
+
+.loader__item::after {
   opacity: 0.83;
   transform: rotate(60deg);
 }
+
 @keyframes l23 {
   100% {
     transform: rotate(1turn);
