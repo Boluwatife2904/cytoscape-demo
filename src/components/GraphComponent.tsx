@@ -104,36 +104,15 @@ const HierarchicalGraph = () => {
     // Highlight only the selected node and its connected edges/nodes
     cy.on("tap", "node.main", (event) => {
       const node = event.target;
-      console.log("node >>>>>>", node);
-
-      // Reset all nodes and edges
-      // cy.elements().removeClass("hidden focused");
-
-      // Highlight the clicked node and its neighbors
-      // node.addClass("focused");
-      // node.connectedEdges().forEach((edge) => edge.removeClass("hidden"));
-      // node
-      //   .connectedEdges()
-      //   .connectedNodes()
-      //   .forEach((n) => n.removeClass("hidden"));
-
-      // Hide all unrelated nodes and edges
-      // cy.elements().difference(node.connectedEdges().connectedNodes()).difference(node).addClass("hidden");
-
       cy.animate({
-        // pan: { x: 100, y: 100 },
         zoom: 5,
         rotate: 30,
         scale: 1.1,
-        fit: {
-          eles: node.connectedEdges().connectedNodes(),
-          padding: 20,
-        },
+        fit: { eles: node.connectedEdges().connectedNodes(), padding: 20 },
         duration: 1000,
       });
     });
 
-    // Reset view when clicking on the background
     cy.on("tap", (event) => {
       if (event.target === cy) {
         cy.elements().removeClass("hidden focused");
@@ -175,7 +154,7 @@ const HierarchicalGraph = () => {
   if (isLoading) return <Loader />;
 
   return (
-    <div>
+    <>
       <Search onHandleResult={($event) => handleResultClick($event)} nodes={mainNodes} />
       <CytoscapeComponent
         elements={elements}
@@ -187,7 +166,7 @@ const HierarchicalGraph = () => {
         zoomingEnabled
         cy={(cy) => (cyRef.current = cy)}
       />
-    </div>
+    </>
   );
 };
 
