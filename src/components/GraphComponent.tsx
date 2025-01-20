@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import elements from "../constants/elements";
 import CytoscapeComponent from "react-cytoscapejs";
 import cytoscape from "cytoscape";
@@ -6,11 +6,13 @@ import coseBilkent from "cytoscape-cose-bilkent";
 
 import Search from "./Search";
 import COLORS from "../constants/colors";
+import Loader from "./Loader";
 
 cytoscape.use(coseBilkent);
 
 const HierarchicalGraph = () => {
   const cyRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const mainNodes = elements.filter((node) => node.data.nodeType === "parent");
 
@@ -94,6 +96,9 @@ const HierarchicalGraph = () => {
 
   useEffect(() => {
     const cy = cyRef.current;
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
     if (!cy) return;
 
     // Highlight only the selected node and its connected edges/nodes
@@ -134,22 +139,12 @@ const HierarchicalGraph = () => {
         cy.elements().removeClass("hidden focused");
       }
     });
-
-    // cy.userPanningEnabled(true);
-    // setTimeout(() => {
-    //   cy.animate({
-    //     // rotate: 30,
-    //     zoom: 0.1, // Set the desired zoom level (e.g., 2x zoom)
-    //     center: { eles: cy.elements() }, // Center around all elements
-    //     duration: 1000, // Animation duration in milliseconds
-    //     easing: "ease-in-out",
-    //   });
-    // }, 500);
   }, []);
 
   const layout = {
     name: "cose-bilkent",
     fit: true,
+    animate: false,
     randomize: true,
     padding: 10,
     nodeRepulsion: 15000,
@@ -176,6 +171,8 @@ const HierarchicalGraph = () => {
       });
     }
   };
+
+  if (isLoading) return <Loader />;
 
   return (
     <div>
