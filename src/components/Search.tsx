@@ -28,14 +28,6 @@ const Search: React.FC<SearchProps> = ({ cy, nodes, onHandleResult }) => {
   };
 
   const handleResultClick = (node: Node) => {
-    // console.log('cy >>>>>>', cy);
-    // const targetNode = cy.getElementById(node.data.id);
-    // if (targetNode) {
-    //   cy.animate({
-    //     fit: { eles: targetNode.closedNeighborhood(), padding: 20 },
-    //     duration: 1000,
-    //   });
-    // }
     onHandleResult(node);
     setQuery("");
     setResults([]);
